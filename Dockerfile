@@ -5,8 +5,10 @@ MAINTAINER hanshuang@talk2yam.com
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN \
-  add-apt-repository ppa:ondrej/php && \
-  apt-get update -y && \
+  apt-get update && \
+  apt-get install -y software-properties-common python-software-properties && \
+  LC_ALL=C.UTF-8 add-apt-repository -y -u ppa:ondrej/php && \
+  apt-get update && \
   apt-get install -y php-pear php7.1-dev zip unzip && \
   apt-get install -y php7.1-fpm php7.1-cli php7.1-mysql php7.1-gd php7.1-json php7.1-mbstring php7.1-mcrypt php7.1-opcache php7.1-readline php7.1-xml php7.1-zip php7.1-curl php-memcached php-gmagick php-redis && \
   sed -i -E "s|^([;]?)cgi.fix_pathinfo.*|cgi.fix_pathinfo = 0|" /etc/php/7.1/fpm/php.ini && \
