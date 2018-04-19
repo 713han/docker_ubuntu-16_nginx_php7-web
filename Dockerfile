@@ -24,5 +24,7 @@ RUN \
 
 EXPOSE 80 443
 
-CMD ["service", "php7.1-fpm", "start"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD \
+  service php7.1-fpm start && \
+  service nginx start && \
+  tail -f /var/log/nginx/error.log
