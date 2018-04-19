@@ -20,9 +20,9 @@ RUN \
   sed -i -E "s|^([;]?)pm.max_spare_servers.*|pm.max_spare_servers = 15|" /etc/php/7.1/fpm/pool.d/www.conf && \
   mkdir --mode 777 /var/run/php && \
   mkdir -p /run /var/lib/nginx /var/lib/php && \
-  chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.1/fpm/php.ini && \
-  service php7.1-fpm start
+  chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.1/fpm/php.ini
 
 EXPOSE 80 443
 
+CMD ["service", "php7.1-fpm", "start"]
 CMD ["nginx", "-g", "daemon off;"]
