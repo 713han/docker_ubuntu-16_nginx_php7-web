@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN \
   apt-get update && \
-  apt-get install -y software-properties-common python-software-properties && \
+  apt-get install -y software-properties-common && \
   LC_ALL=C.UTF-8 add-apt-repository -y -u ppa:ondrej/php && \
   apt-get update && \
   apt-get install -y php-pear php7.2-dev zip unzip curl wget telnet vim bzip2 locales graphicsmagick && \
