@@ -31,4 +31,4 @@ EXPOSE 80 443
 CMD \
   service php7.2-fpm start && \
   service nginx start && \
-  tail -f /var/log/nginx/error.log
+  tail -f /var/log/php7.2-fpm.log
