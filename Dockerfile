@@ -20,7 +20,10 @@ RUN \
   sed -i -E "s|^([;]?)pm.max_spare_servers.*|pm.max_spare_servers = 15|" /etc/php/7.1/fpm/pool.d/www.conf && \
   mkdir --mode 777 /var/run/php && \
   mkdir -p /run /var/lib/nginx /var/lib/php && \
-  chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.1/fpm/php.ini
+  chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.1/fpm/php.ini && \
+  curl -sS https://getcomposer.org/installer | php && \
+  mv composer.phar /usr/local/bin/composer
+
 
 EXPOSE 80 443
 
