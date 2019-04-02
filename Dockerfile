@@ -25,6 +25,7 @@ RUN \
   mkdir --mode 777 /var/run/php && \
   mkdir -p /run /var/lib/nginx /var/lib/php && \
   chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.2/fpm/php.ini && \
+  update-alternatives --set php /usr/bin/php7.2 && \
   curl -sS https://getcomposer.org/installer | php && \
   mv composer.phar /usr/local/bin/composer && \
   mkdir -p /home/www-data/.ssh && \
