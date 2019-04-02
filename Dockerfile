@@ -26,7 +26,12 @@ RUN \
   mkdir -p /run /var/lib/nginx /var/lib/php && \
   chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.2/fpm/php.ini && \
   curl -sS https://getcomposer.org/installer | php && \
-  mv composer.phar /usr/local/bin/composer
+  mv composer.phar /usr/local/bin/composer && \
+  mkdir -p /home/www-data/.ssh && \
+  cp ~/.bashrc /home/www-data/.bashrc && \
+  chown -R www-data:www-data /home/www && \
+  chown -R www-data:www-data /home/www-data && \
+  sed -i -E "s|^([;]?)www-data.*|www-data:x:33:33:www-data:/home/www-data:/bin/bash|" /etc/passwd
 
 EXPOSE 80 443
 
