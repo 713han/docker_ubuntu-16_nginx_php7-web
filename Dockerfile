@@ -10,7 +10,7 @@ RUN \
   LC_ALL=C.UTF-8 add-apt-repository -y -u ppa:ondrej/php && \
   apt-get update && \
   apt-get install -y php-pear php7.2-dev zip unzip curl wget telnet vim bzip2 locales graphicsmagick && \
-  apt-get install -y php7.2-fpm php7.2-cli php7.2-mysql php7.2-gd php7.2-json php7.2-mbstring php7.2-opcache php7.2-readline php7.2-xml php7.2-zip php7.2-curl php-memcached php-gmagick php-redis && \
+  apt-get install -y php7.2-fpm php7.2-cli php7.2-mysql php7.2-gd php7.2-json php7.2-mbstring php7.2-opcache php7.2-readline php7.2-xml php7.2-zip php7.2-curl php7.2-bcmath php-memcached php-gmagick php-redis && \
   sed -i -E "s|^([;]?)cgi.fix_pathinfo.*|cgi.fix_pathinfo = 0|" /etc/php/7.2/fpm/php.ini && \
   sed -i -E "s|^([;]?)mbstring.internal_encoding.*|mbstring.internal_encoding = UTF-8|" /etc/php/7.2/fpm/php.ini && \
   sed -i -E "s|^([;]?) max_input_vars.*|max_input_vars = 5000|" /etc/php/7.2/fpm/php.ini && \
@@ -25,14 +25,7 @@ RUN \
   mkdir --mode 777 /var/run/php && \
   mkdir -p /run /var/lib/nginx /var/lib/php && \
   chmod -R 777 /run /var/lib/nginx /var/lib/php /etc/php/7.2/fpm/php.ini && \
-  update-alternatives --set php /usr/bin/php7.2 && \
-  curl -sS https://getcomposer.org/installer | php && \
-  mv composer.phar /usr/local/bin/composer && \
-  mkdir -p /home/www-data/.ssh && \
-  cp ~/.bashrc /home/www-data/.bashrc && \
-  chown -R www-data:www-data /home/www && \
-  chown -R www-data:www-data /home/www-data && \
-  sed -i -E "s|^([;]?)www-data.*|www-data:x:33:33:www-data:/home/www-data:/bin/bash|" /etc/passwd
+  update-alternatives --set php /usr/bin/php7.2
 
 EXPOSE 80 443
 
